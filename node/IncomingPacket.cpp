@@ -594,6 +594,7 @@ bool IncomingPacket::_doOK(const RuntimeEnvironment* RR, void* tPtr, const Share
 
 			if (! hops()) {
 				_path->updateLatency((unsigned int)latency, RR->node->now());
+				peer->acknowledgeFullHello(at<int64_t>(ZT_PROTO_VERB_HELLO__OK__IDX_TIMESTAMP));
 			}
 
 			peer->setRemoteVersion(vProto, vMajor, vMinor, vRevision);
